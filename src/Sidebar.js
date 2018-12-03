@@ -6,7 +6,10 @@ class Sidebar extends Component {
       <div id="sidebar">
         <img src="theindex.svg" className="logo" alt="the index logo" />
         <section>
-          <h4 className="menu-item active">
+          <h4
+            className="menu-item active"
+            onClick={() => this.props.unselectAuthor()}
+          >
             <button>AUTHORS</button>
           </h4>
         </section>
