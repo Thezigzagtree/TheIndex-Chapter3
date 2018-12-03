@@ -50,7 +50,11 @@ class App extends Component {
       );
     } else
       return (
-        <AuthorsList authors={authors} filterAuthors={this.filterAuthors} />
+        <AuthorsList
+          authors={authors}
+          filterAuthors={this.filterAuthors}
+          selectAuthor={this.selectAuthor}
+        />
       );
   }
 
