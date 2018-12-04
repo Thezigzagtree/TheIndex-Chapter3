@@ -40,7 +40,12 @@ class App extends Component {
 
   isAuthorSelected() {
     if (this.state.currentAuthor.first_name) {
-      return <AuthorDetail currentAuthor={this.state.currentAuthor} />;
+      return (
+        <AuthorDetail
+          currentAuthor={this.state.currentAuthor}
+          selectAuthor={this.selectAuthor}
+        />
+      );
     } else if (this.state.filteredAuthors.length > 0) {
       return (
         <AuthorsList

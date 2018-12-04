@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BookRow from "./BookRow";
 
 class AuthorDetail extends Component {
   render() {
@@ -7,7 +8,11 @@ class AuthorDetail extends Component {
       <div className="author col-xs-10">
         <div>
           <h3>{`${currentAuthor.first_name} ${currentAuthor.last_name}`} </h3>
-          <img src={currentAuthor.imageUrl} className="img-thumbnail" />
+          <img
+            src={currentAuthor.imageUrl}
+            className="img-thumbnail"
+            onClick={() => this.props.selectAuthor(currentAuthor)}
+          />
         </div>
         <table className="mt-3 table">
           <thead>
@@ -18,20 +23,17 @@ class AuthorDetail extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>I SHOULD BE A BOOK NAME</td>
-              <td>I SHOULD BE A STRING OF THIS BOOK'S AUTHORS</td>
-              <td>
-                <button className="btn" style={{ backgroundColor: "blue" }} />
-              </td>
-            </tr>
-            <tr>
-              <td>I SHOULD BE ANOTHER BOOK NAME</td>
-              <td>I SHOULD BE A STRING OF THIS OHTER BOOK'S AUTHORS</td>
-              <td>
-                <button className="btn" style={{ backgroundColor: "red" }} />
-              </td>
-            </tr>
+            {currentAuthor.books.map((book, index) => {
+              return (
+                <BookRow
+                  key={book.title + index}
+                  book={book}
+                  authorname={
+                    currentAuthor.first_name + " " + currentAuthor.last_name
+                  }
+                />
+              );
+            })}
           </tbody>
         </table>
       </div>
